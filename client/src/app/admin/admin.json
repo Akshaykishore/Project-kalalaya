@@ -1,0 +1,36 @@
+{
+    "studentForm": [
+        {
+            "title": "Application Number",
+            "type": "number"
+        },
+        {
+            "title": "Name",
+            "type": "text"
+        },
+        {
+            "title": "Age",
+            "type": "number"
+        },
+        {
+            "title": "Address",
+            "type": "text"
+        },
+        {
+            "title": "Category",
+            "type": "dropdown"
+        },
+        {
+            "title": "Fees",
+            "type": "number"
+        },
+        {
+            "title": "Mobile",
+            "type": "number"
+        },
+        {
+            "title": "Landline",
+            "type": "number"
+        }
+    ]
+}

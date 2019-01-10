@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Student Registration Form</h1>
+  <hr>
+  <form>
+    <div *ngFor="let template of studentForm" class="form-group">
+      <label>{{template.title}} :</label>
+      <input *ngIf="template.type != 'dropdown'" type="{{template.type}}" class="form-control">
+      <select *ngIf="template.type == 'dropdown'" class="form-control">
+        <option value="">Dance</option>
+        <option value="">Singing</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
