@@ -8,7 +8,7 @@ const studentController = require('./controller/studentController');
 let app = express();
 
 /* Server port */ 
-const port = 4000;
+const port = 4400;
 
 /* Middleware */ 
 app.use(bodyparser.json());

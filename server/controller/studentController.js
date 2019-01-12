@@ -8,19 +8,22 @@ var studentDetails = require('../models/studentDetails');
 
 /* Add Student details */
 router.post('/addStudent', (req, res) => {
-    console.log('Good');
-    studentDetails.create({ name: "Aravind", age: 21, admissionNumber: 1, address: "Chennai", category: "dance", fees: 200, mobile: 9489103429, landline: 221320 });
-    // let name = req.body.Name;
-    // let age = (Number)(req.body.Age);
-    // let years = (Number)(req.body.Years);
-    // studentDetails.create({ Name: name, Age: age, Years: years });
+    let name = req.body.name;
+    let age = req.body.age;
+    let admissionNumber = req.body.admissionNumber;
+    let address = req.body.address;
+    let category = req.body.category;
+    let fees = req.body.fees;
+    let mobile = req.body.mobile;
+    let landline = req.body.landline;
+    studentDetails.create({ name: name, age: age, admissionNumber: admissionNumber, address: address, category: category, fees: fees, mobile: mobile, landline: landline });
 });
 
 /* Get all Student details */
-router.get('/', (req, res) => {
-    studentDetails.find({}, (err, data) => {
-        if (!err) res.send(data);
-        else console.log('Error msg' + err);
+router.get('/addStudent/:name', (req, res, next) => {
+    studentDetails.find({'name':req.params.name},(err, data) => {
+        if (err) res.send(err);
+        res.json(data);
     });
 });
 
