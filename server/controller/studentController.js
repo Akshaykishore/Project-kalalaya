@@ -35,8 +35,8 @@ router.get('/delete/:id', (req, res) => {
     studentDetails.deleteOne({ _id: req.params.id }, (err, data) => {
         if (!err) res.send(data);
         else console.log('Error msg' + err);
-    })
-})
+    });
+});
 
 /* Find and modify one particular student record */
 router.get('/update/:id', (req, res) => {
@@ -46,8 +46,8 @@ router.get('/update/:id', (req, res) => {
     studentDetails.findOneAndUpdate({ _id: req.params.id }, (err, data) => {
         if (!err) res.send(data);
         else console.log('Error msg' + err);
-    })
-})
+    });
+});
 
 /* Export router */
 module.exports = router;
