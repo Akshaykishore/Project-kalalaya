@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavigationStart } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  showHead: boolean;
+  constructor(private router: Router) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/gallery') {
+          this.showHead = true;
+        } else {
+          this.showHead = false;
+        }
+      }
+    });
+  }
 }

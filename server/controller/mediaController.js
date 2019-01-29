@@ -9,7 +9,7 @@ const media = require('../models/mediauploads');
 /* Multer storage */
 const store = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'client/src/assets/uploads')
+        cb(null, 'upload/')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname);
@@ -20,7 +20,7 @@ const store = multer.diskStorage({
 const imageFileFilter = (req, file, cb) => {
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error('You can upload only image files!'), false);
-    }
+    }           
     cb(null, true);
 };
 
@@ -39,18 +39,18 @@ _router.get('/', (req, res, next) => {
     });
 });
 
-_router.post('/upload', upload.single('file'), (req, res, next) => {
+_router.post('/imageUpload', upload.single('file'), (req, res, next) => {
     console.log('post file with content:');
     console.log(req.file);
     // Initializing Media Info
     let newFile = new Media({
-        filePath: 'assets\/uploads\/' + req.file.filename,
+        filePath: './upload/' + req.file.filename,
         fileName: req.file.filename,
         imageTitle: req.file.filename,
         imageAlt: req.file.filename,
         fileType: req.file.mimetype,
         fileSize: req.file.size,
-        // imageDimension: fileDimension,
+        imageDimension: fileDimension,
         fileUploadDate: Date.now()
     });
     // Add File to DB

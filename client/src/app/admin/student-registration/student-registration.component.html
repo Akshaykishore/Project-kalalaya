@@ -1,15 +1,24 @@
 <div class="container">
   <h1>Student Registration Form</h1>
   <hr>
-  <form>
-    <div *ngFor="let template of studentForm" class="form-group">
-      <label>{{template.title}} :</label>
-      <input *ngIf="template.type != 'dropdown'" type="{{template.type}}" class="form-control">
-      <select *ngIf="template.type == 'dropdown'" class="form-control">
-        <option value="">Dance</option>
-        <option value="">Singing</option>
+  <form [formGroup]="studentDetailsForm" (ngSubmit)="onSubmit(studentDetailsForm.value)">
+    <div *ngFor="let field of studentFormTemplate" class="form-group">
+      <label>{{field.title}} :</label>
+
+      <input *ngIf="field.type != 'dropdown' && field.title != 'Fees'" type="{{field.type}}" formControlName="{{field.formControlName}}"
+        class="form-control">
+
+      <input *ngIf="field.title == 'Fees'" type="{{field.type}}" value="{{fees}}" formControlName="{{field.formControlName}}"
+        [(ngModel)]="fees" class="form-control">
+
+      <select *ngIf="field.type == 'dropdown'" class="form-control" formControlName="{{field.formControlName}}"
+        (change)="getFees()">
+        <option selected hidden>{{field.defaultValue}}</option>
+        <option *ngFor="let category of classCategories" value="{{category}}">{{category}}</option>
       </select>
+
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div *ngIf="formSubmitted" class="alert alert-success">Successfully Created</div>
+    <button type="submit" class="btn btn-primary" [disabled]="studentDetailsForm.invalid">Submit</button>
   </form>
 </div>

@@ -1,36 +1,53 @@
 {
-    "studentForm": [
+    "studentFormTemplate": [
         {
-            "title": "Application Number",
-            "type": "number"
+            "title": "Admission Number",
+            "type": "number",
+            "formControlName": "admissionNumber"
         },
         {
             "title": "Name",
-            "type": "text"
+            "type": "text",
+            "formControlName": "name"
         },
         {
             "title": "Age",
-            "type": "number"
+            "type": "number",
+            "formControlName": "age"
         },
         {
             "title": "Address",
-            "type": "text"
+            "type": "text",
+            "formControlName": "address"
         },
         {
             "title": "Category",
-            "type": "dropdown"
+            "type": "dropdown",
+            "defaultValue": "Select here",
+            "formControlName": "category"
         },
         {
             "title": "Fees",
-            "type": "number"
+            "type": "number",
+            "formControlName": "fees"
         },
         {
             "title": "Mobile",
-            "type": "number"
+            "type": "number",
+            "formControlName": "mobile"
         },
         {
             "title": "Landline",
-            "type": "number"
+            "type": "number",
+            "formControlName": "landline"
         }
+    ],
+    "classCategories": [
+        "Dance",
+        "Singing"
+    ],
+    "classFees": [
+        600,
+        400
     ]
 }

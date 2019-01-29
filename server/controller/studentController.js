@@ -8,15 +8,7 @@ var studentDetails = require('../models/studentDetails');
 
 /* Add Student details */
 router.post('/addStudent', (req, res) => {
-    let name = req.body.name;
-    let age = req.body.age;
-    let admissionNumber = req.body.admissionNumber;
-    let address = req.body.address;
-    let category = req.body.category;
-    let fees = req.body.fees;
-    let mobile = req.body.mobile;
-    let landline = req.body.landline;
-    studentDetails.create({ name: name, age: age, admissionNumber: admissionNumber, address: address, category: category, fees: fees, mobile: mobile, landline: landline });
+    studentDetails.create(req.body);
 });
 
 /* Get all Student details */
